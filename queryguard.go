@@ -140,9 +140,7 @@ func IsSafeSelectQuery(sqlQuery string, currentDepth int, reportingMode bool) er
 	}
 
 	// Remove trailing semicolon if present
-	if strings.HasSuffix(trimmedQuery, ";") {
-		trimmedQuery = trimmedQuery[:len(trimmedQuery)-1]
-	}
+	trimmedQuery = strings.TrimSuffix(trimmedQuery, ";")
 
 	// Pre-check for dangerous patterns in text
 	// This check is now necessary as we won't use pre-filtering
